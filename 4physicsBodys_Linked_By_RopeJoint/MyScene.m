@@ -146,7 +146,6 @@
     /* Called when a touch begins */
     
     if (_mySquare1.physicsBody.dynamic) {
-        
         [_mySquare1.physicsBody setDynamic:NO];
     }
     

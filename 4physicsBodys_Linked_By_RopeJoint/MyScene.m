@@ -32,8 +32,20 @@
 
 @implementation MyScene
 
+-(void) redoingAnchorPoint{
+   
+    
+}
+
 -(void) activateJointRope{
     
+    [self redoingAnchorPoint];
+    
+    
+    
+    
+//    _myRopeJoint1 = [SKPhysicsJointLimit jointWithBodyA:_mySquare1.physicsBody bodyB:_mySquare2.physicsBody anchorA:_mySquare1.anchorPoint anchorB:_mySquare2.anchorPoint];
+  
     _myRopeJoint1 = [SKPhysicsJointLimit jointWithBodyA:_mySquare1.physicsBody bodyB:_mySquare2.physicsBody anchorA:_mySquare1.position anchorB:_mySquare2.position];
     _myRopeJoint2 = [SKPhysicsJointLimit jointWithBodyA:_mySquare2.physicsBody bodyB:_mySquare3.physicsBody anchorA:_mySquare2.position anchorB:_mySquare3.position];
     _myRopeJoint3 = [SKPhysicsJointLimit jointWithBodyA:_mySquare3.physicsBody bodyB:_mySquare4.physicsBody anchorA:_mySquare3.position anchorB:_mySquare4.position];
@@ -43,7 +55,7 @@
     _myRopeJoint7 = [SKPhysicsJointLimit jointWithBodyA:_mySquare7.physicsBody bodyB:_mySquare8.physicsBody anchorA:_mySquare7.position anchorB:_mySquare8.position];
  
     
-    [self.physicsWorld addJoint:_myRopeJoint1];
+  //  [self.physicsWorld addJoint:_myRopeJoint1];
     [self.physicsWorld addJoint:_myRopeJoint2];
     [self.physicsWorld addJoint:_myRopeJoint3];
     [self.physicsWorld addJoint:_myRopeJoint4];
@@ -56,12 +68,12 @@
 }
 
 -(void) spawnSquares{
-    _mySquare1 = [[SKSpriteNode alloc]initWithColor:[SKColor redColor] size:CGSizeMake(70, 70)];
-    _mySquare2 =[[SKSpriteNode alloc]initWithColor:[SKColor purpleColor] size:CGSizeMake(60, 60)];
-    _mySquare3 =[[SKSpriteNode alloc]initWithColor:[SKColor orangeColor] size:CGSizeMake(50, 50)];
-    _mySquare4 =[[SKSpriteNode alloc]initWithColor:[SKColor yellowColor] size:CGSizeMake(40, 40)];
-    _mySquare5 = [[SKSpriteNode alloc]initWithColor:[SKColor redColor] size:CGSizeMake(30, 30)];
-    _mySquare6 =[[SKSpriteNode alloc]initWithColor:[SKColor purpleColor] size:CGSizeMake(20, 20)];
+    _mySquare1 = [[SKSpriteNode alloc]initWithColor:[SKColor redColor] size:CGSizeMake(20, 70)];
+    _mySquare2 =[[SKSpriteNode alloc]initWithColor:[SKColor purpleColor] size:CGSizeMake(22, 60)];
+    _mySquare3 =[[SKSpriteNode alloc]initWithColor:[SKColor orangeColor] size:CGSizeMake(20, 50)];
+    _mySquare4 =[[SKSpriteNode alloc]initWithColor:[SKColor yellowColor] size:CGSizeMake(18, 40)];
+    _mySquare5 = [[SKSpriteNode alloc]initWithColor:[SKColor redColor] size:CGSizeMake(15, 30)];
+    _mySquare6 =[[SKSpriteNode alloc]initWithColor:[SKColor purpleColor] size:CGSizeMake(13, 20)];
     _mySquare7 =[[SKSpriteNode alloc]initWithColor:[SKColor orangeColor] size:CGSizeMake(10, 10)];
     _mySquare8 =[[SKSpriteNode alloc]initWithColor:[SKColor yellowColor] size:CGSizeMake(5, 5)];
     
@@ -84,6 +96,20 @@
     [_mySquare8 setPosition:CGPointMake(self.size.width/1.5, 260)];
     
     
+//    [_mySquare1 setAnchorPoint:CGPointMake(_mySquare1.size.height/2, _mySquare1.frame.size.width)];
+//    [_mySquare2 setAnchorPoint:CGPointMake(_mySquare2.size.height/2, _mySquare2.frame.size.width*-1)];
+
+    //    [_mySquare1 setPosition:CGPointMake(self.size.width/1.5, 340)];
+//    [_mySquare2 setPosition:CGPointMake(self.size.width/1.5, 340)];
+//    [_mySquare3 setPosition:CGPointMake(self.size.width/1.5, 300)];
+//    [_mySquare4 setPosition:CGPointMake(self.size.width/1.5, 340)];
+//    [_mySquare5 setPosition:CGPointMake(self.size.width/1.5, 320)];
+//    [_mySquare6 setPosition:CGPointMake(self.size.width/1.5, 300)];
+//    [_mySquare7 setPosition:CGPointMake(self.size.width/1.5, 280)];
+//    [_mySquare8 setPosition:CGPointMake(self.size.width/1.5, 260)];
+    
+    
+    
     _mySquare1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_mySquare1.size];
     _mySquare2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_mySquare2.size];
     _mySquare3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_mySquare3.size];
@@ -92,6 +118,15 @@
     _mySquare6.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_mySquare6.size];
     _mySquare7.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_mySquare7.size];
     _mySquare8.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_mySquare8.size];
+    
+    [_mySquare1.physicsBody setDynamic:NO];
+    [_mySquare2.physicsBody setDynamic:YES];
+    [_mySquare3.physicsBody setDynamic:YES];
+    [_mySquare4.physicsBody setDynamic:YES];
+    [_mySquare5.physicsBody setDynamic:YES];
+    [_mySquare6.physicsBody setDynamic:YES];
+    [_mySquare7.physicsBody setDynamic:YES];
+    [_mySquare8.physicsBody setDynamic:YES];
 
     
     [_mySquare1.physicsBody setRestitution:1.0];
@@ -128,9 +163,11 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
+    
         self.scaleMode = SKSceneScaleModeAspectFit;
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         [self.physicsBody setRestitution:1];
+        [self.physicsWorld setGravity:CGVectorMake(0, -9)];
         
         
         [self spawnSquares];

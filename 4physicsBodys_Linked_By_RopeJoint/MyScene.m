@@ -19,12 +19,14 @@
 @property SKSpriteNode* mySquare7;
 @property SKSpriteNode* mySquare8;
 @property SKSpriteNode* myShelf;
-@property SKPhysicsJoint* myRopeJoint;
 @property SKPhysicsJoint* myRopeJoint1;
 @property SKPhysicsJoint* myRopeJoint2;
 @property SKPhysicsJoint* myRopeJoint3;
 @property SKPhysicsJoint* myRopeJoint4;
 @property SKPhysicsJoint* myRopeJoint5;
+@property SKPhysicsJoint* myRopeJoint6;
+@property SKPhysicsJoint* myRopeJoint7;
+
 
 @end
 
@@ -32,18 +34,24 @@
 
 -(void) activateJointRope{
     
-    _myRopeJoint = [SKPhysicsJointLimit jointWithBodyA:_mySquare1.physicsBody bodyB:_mySquare2.physicsBody anchorA:_mySquare1.position anchorB:_mySquare2.position];
-    
-    [self.physicsWorld addJoint:_myRopeJoint];
-    
-    _myRopeJoint1 = [SKPhysicsJointLimit jointWithBodyA:_mySquare2.physicsBody bodyB:_mySquare3.physicsBody anchorA:_mySquare2.position anchorB:_mySquare3.position];
+    _myRopeJoint1 = [SKPhysicsJointLimit jointWithBodyA:_mySquare1.physicsBody bodyB:_mySquare2.physicsBody anchorA:_mySquare1.position anchorB:_mySquare2.position];
+    _myRopeJoint2 = [SKPhysicsJointLimit jointWithBodyA:_mySquare2.physicsBody bodyB:_mySquare3.physicsBody anchorA:_mySquare2.position anchorB:_mySquare3.position];
+    _myRopeJoint3 = [SKPhysicsJointLimit jointWithBodyA:_mySquare3.physicsBody bodyB:_mySquare4.physicsBody anchorA:_mySquare3.position anchorB:_mySquare4.position];
+    _myRopeJoint4 = [SKPhysicsJointLimit jointWithBodyA:_mySquare4.physicsBody bodyB:_mySquare5.physicsBody anchorA:_mySquare4.position anchorB:_mySquare5.position];
+    _myRopeJoint5 = [SKPhysicsJointLimit jointWithBodyA:_mySquare5.physicsBody bodyB:_mySquare6.physicsBody anchorA:_mySquare5.position anchorB:_mySquare6.position];
+    _myRopeJoint6 = [SKPhysicsJointLimit jointWithBodyA:_mySquare6.physicsBody bodyB:_mySquare7.physicsBody anchorA:_mySquare6.position anchorB:_mySquare7.position];
+    _myRopeJoint7 = [SKPhysicsJointLimit jointWithBodyA:_mySquare7.physicsBody bodyB:_mySquare8.physicsBody anchorA:_mySquare7.position anchorB:_mySquare8.position];
+ 
     
     [self.physicsWorld addJoint:_myRopeJoint1];
-    
-    
-    _myRopeJoint2 = [SKPhysicsJointLimit jointWithBodyA:_mySquare3.physicsBody bodyB:_mySquare4.physicsBody anchorA:_mySquare3.position anchorB:_mySquare4.position];
-    
     [self.physicsWorld addJoint:_myRopeJoint2];
+    [self.physicsWorld addJoint:_myRopeJoint3];
+    [self.physicsWorld addJoint:_myRopeJoint4];
+    [self.physicsWorld addJoint:_myRopeJoint5];
+    [self.physicsWorld addJoint:_myRopeJoint6];
+    [self.physicsWorld addJoint:_myRopeJoint7];
+ 
+
     
 }
 
@@ -57,14 +65,23 @@
     _mySquare7 =[[SKSpriteNode alloc]initWithColor:[SKColor orangeColor] size:CGSizeMake(10, 10)];
     _mySquare8 =[[SKSpriteNode alloc]initWithColor:[SKColor yellowColor] size:CGSizeMake(5, 5)];
     
-    [_mySquare1 setPosition:CGPointMake(self.size.width/1.5, self.size.height/1.5)];
-    [_mySquare2 setPosition:CGPointMake(self.size.width/1.5, self.size.height/2)];
-    [_mySquare3 setPosition:CGPointMake(self.size.width/1.5, self.size.height/2.5)];
-    [_mySquare4 setPosition:CGPointMake(self.size.width/1.5, self.size.height/3)];
-    [_mySquare5 setPosition:CGPointMake(self.size.width/1.5, self.size.height/1.5+5)];
-    [_mySquare6 setPosition:CGPointMake(self.size.width/1.5, self.size.height/2+5)];
-    [_mySquare7 setPosition:CGPointMake(self.size.width/1.5, self.size.height/2.5+5)];
-    [_mySquare8 setPosition:CGPointMake(self.size.width/1.5, self.size.height/3+5)];
+//    for (int i = 1; i<8; i++) {
+//        int startingDistance = 0;
+//    
+//        NSMutableString *myEnumaratedSquare = [NSMutableString stringWithFormat:@"_mySquare%i", i];
+//        SKSpriteNode *holderNode = [[SKSpriteNode alloc]init];
+//        [holderNode setPosition:CGPointMake(200, (400+i))];
+//        
+//    }
+
+    [_mySquare1 setPosition:CGPointMake(self.size.width/1.5, 400)];
+    [_mySquare2 setPosition:CGPointMake(self.size.width/1.5, 340)];
+    [_mySquare3 setPosition:CGPointMake(self.size.width/1.5, 300)];
+    [_mySquare4 setPosition:CGPointMake(self.size.width/1.5, 340)];
+    [_mySquare5 setPosition:CGPointMake(self.size.width/1.5, 320)];
+    [_mySquare6 setPosition:CGPointMake(self.size.width/1.5, 300)];
+    [_mySquare7 setPosition:CGPointMake(self.size.width/1.5, 280)];
+    [_mySquare8 setPosition:CGPointMake(self.size.width/1.5, 260)];
     
     
     _mySquare1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_mySquare1.size];
@@ -98,7 +115,7 @@
 }
 
 -(void)makeShelf{
-    _myShelf = [[SKSpriteNode alloc]initWithColor:[SKColor lightGrayColor] size:CGSizeMake(100, 40)];
+    _myShelf = [[SKSpriteNode alloc]initWithColor:[SKColor lightGrayColor] size:CGSizeMake(100, 20)];
     _myShelf.position = CGPointMake(self.size.width/2.4, self.size.height/2);
     _myShelf.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_myShelf.size];
     [_myShelf.physicsBody setDynamic:NO];

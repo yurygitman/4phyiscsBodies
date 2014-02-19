@@ -476,6 +476,7 @@
 				D56006FB18B2896800D0C342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D56006FC18B2896800D0C342 /* Build configuration list for PBXNativeTarget "4physicsBodys_Linked_By_RopeJointTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +485,7 @@
 				D56006FE18B2896800D0C342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -143,20 +143,10 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    if (_mySquare1.physicsBody.dynamic) {
-        [_mySquare1.physicsBody setDynamic:NO];
-    }
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         [_mySquare1 setPosition:location];
-        
-        
-        // [_mySquare1.physicsBody setDynamic:NO];
-        //  [_mySquare2.physicsBody setDynamic:NO];
-        
     }
 }
 
@@ -165,27 +155,16 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         [_mySquare1 setPosition:location];
-        
     }
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event  {
     
-    if (!_mySquare1.physicsBody.dynamic) {
-        [_mySquare1.physicsBody setDynamic:YES];
-    }
-    //  [_mySquare1.physicsBody setDynamic:YES];
-    //  [_mySquare2.physicsBody setDynamic:YES];
     
 }
 
 -(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    if (!_mySquare1.physicsBody.dynamic) {
-        [_mySquare1.physicsBody setDynamic:YES];
-    }
-    //  [_mySquare1.physicsBody setDynamic:YES];
-    //  [_mySquare2.physicsBody setDynamic:YES];
     
 }
 

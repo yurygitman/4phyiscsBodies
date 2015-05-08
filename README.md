@@ -1,7 +1,8 @@
 # 4phyiscsBodies
 + The User drags the RED Box when touching the screen.
-+ 4 SKPhysicsDody's Are Connected by SKPhysicsJoint (that acts like a rope)
-+ PhysicsWorld's gravity set a default
++ 4 SKPhysicsDody's Are Connected by SKPhysicsJoint.
++ SKPhysicsJoint programmed with "rope" behavior.
++ PhysicsWorld's gravity set to default.
 
 # Screen Shot
 ![ScreenShot](https://github.com/samuraipapa/4phyiscsBodies/blob/master/screen.gif) 
